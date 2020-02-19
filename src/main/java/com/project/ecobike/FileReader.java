@@ -15,7 +15,7 @@ import java.util.logging.Logger;
 public class FileReader {
 
     public static ArrayList<String> arrСatalog = new ArrayList<>();
-    public static String[] strArr;
+    public static String[] itemArr;
     public static String current;
 
     /**
@@ -34,33 +34,33 @@ public class FileReader {
             BufferedReader read = Files.newBufferedReader(Paths.get("C:\\Users\\mrbud\\Downloads\\Quality Unit Ukraine\\ecobike.txt"));
 
             while ((current = read.readLine()) != null) {
-                strArr = current.split("\\;");
+                itemArr = current.split("\\;");
                 if (current.contains("SPEEDELEC")) {
-                    Speedelec speedelec = new Speedelec(strArr[0],
-                            Integer.parseInt((strArr[1]).strip()),
-                            Integer.parseInt((strArr[2]).strip()),
-                            checkAvailability(strArr[3].strip()),
-                            Integer.parseInt((strArr[4]).strip()),
-                            strArr[5].strip(),
-                            Integer.parseInt((strArr[6]).strip()));
+                    Speedelec speedelec = new Speedelec(itemArr[0],
+                            Integer.parseInt((itemArr[1]).strip()),
+                            Integer.parseInt((itemArr[2]).strip()),
+                            checkAvailability(itemArr[3].strip()),
+                            Integer.parseInt((itemArr[4]).strip()),
+                            itemArr[5].strip(),
+                            Integer.parseInt((itemArr[6]).strip()));
                     arrСatalog.add(speedelec.toString());
                 } else if (current.contains("E-BIKE")) {
-                    eBike ebike = new eBike(strArr[0],
-                            Integer.parseInt((strArr[1]).strip()),
-                            Integer.parseInt((strArr[2]).strip()),
-                            checkAvailability(strArr[3].strip()),
-                            Integer.parseInt((strArr[4]).strip()),
-                            strArr[5].strip(),
-                            Integer.parseInt((strArr[6]).strip()));
+                    eBike ebike = new eBike(itemArr[0],
+                            Integer.parseInt((itemArr[1]).strip()),
+                            Integer.parseInt((itemArr[2]).strip()),
+                            checkAvailability(itemArr[3].strip()),
+                            Integer.parseInt((itemArr[4]).strip()),
+                            itemArr[5].strip(),
+                            Integer.parseInt((itemArr[6]).strip()));
                     arrСatalog.add(ebike.toString());
                 } else if (current.contains("FOLDING")) {
-                    FoldingBike foldingBike = new FoldingBike(strArr[0],
-                            Integer.parseInt((strArr[1]).strip()),
-                            Integer.parseInt((strArr[2]).strip()),
-                            Integer.parseInt((strArr[3]).strip()),
-                            checkAvailability(strArr[4].strip()),
-                            strArr[5].strip(),
-                            Integer.parseInt((strArr[6]).strip()));
+                    FoldingBike foldingBike = new FoldingBike(itemArr[0],
+                            Integer.parseInt((itemArr[1]).strip()),
+                            Integer.parseInt((itemArr[2]).strip()),
+                            Integer.parseInt((itemArr[3]).strip()),
+                            checkAvailability(itemArr[4].strip()),
+                            itemArr[5].strip(),
+                            Integer.parseInt((itemArr[6]).strip()));
                     arrСatalog.add(foldingBike.toString());
                 }
             }
@@ -71,7 +71,7 @@ public class FileReader {
 
     public static String checkAvailability(String value) {
         if (Boolean.parseBoolean(value) == true) {
-            return value = "head/tail light.";
+            return value = "head/tail light";
 
         } else {
             return value = "no head/tail light";
