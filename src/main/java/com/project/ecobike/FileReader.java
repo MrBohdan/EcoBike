@@ -14,7 +14,7 @@ import java.util.logging.Logger;
  */
 public class FileReader {
 
-    public static ArrayList<String> arrList = new ArrayList<>();
+    public static ArrayList<String> arrСatalog = new ArrayList<>();
     public static String[] strArr;
     public static String current;
 
@@ -39,33 +39,43 @@ public class FileReader {
                     Speedelec speedelec = new Speedelec(strArr[0],
                             Integer.parseInt((strArr[1]).strip()),
                             Integer.parseInt((strArr[2]).strip()),
-                            strArr[3].strip(),
+                            checkAvailability(strArr[3].strip()),
                             Integer.parseInt((strArr[4]).strip()),
                             strArr[5].strip(),
                             Integer.parseInt((strArr[6]).strip()));
-                    arrList.add(speedelec.toString());
+                    arrСatalog.add(speedelec.toString());
                 } else if (current.contains("E-BIKE")) {
                     eBike ebike = new eBike(strArr[0],
                             Integer.parseInt((strArr[1]).strip()),
                             Integer.parseInt((strArr[2]).strip()),
-                            strArr[3].strip(),
+                            checkAvailability(strArr[3].strip()),
                             Integer.parseInt((strArr[4]).strip()),
                             strArr[5].strip(),
                             Integer.parseInt((strArr[6]).strip()));
-                    arrList.add(ebike.toString());
+                    arrСatalog.add(ebike.toString());
                 } else if (current.contains("FOLDING")) {
                     FoldingBike foldingBike = new FoldingBike(strArr[0],
                             Integer.parseInt((strArr[1]).strip()),
                             Integer.parseInt((strArr[2]).strip()),
                             Integer.parseInt((strArr[3]).strip()),
-                            strArr[4].strip(),
+                            checkAvailability(strArr[4].strip()),
                             strArr[5].strip(),
                             Integer.parseInt((strArr[6]).strip()));
-                    arrList.add(foldingBike.toString());
+                    arrСatalog.add(foldingBike.toString());
                 }
             }
         } catch (IOException ex) {
             Logger.getLogger(FileReader.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+
+    public static String checkAvailability(String value) {
+        if (Boolean.parseBoolean(value) == true) {
+            return value = "head/tail light.";
+
+        } else {
+            return value = "no head/tail light";
+        }
+    }
+
 }

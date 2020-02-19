@@ -1,5 +1,6 @@
 package com.project.ecobike;
 
+import static java.lang.System.exit;
 import java.util.Scanner;
 
 /**
@@ -26,11 +27,11 @@ public class UserInput {
 
     public static void selector(int input) {
         if (input == 1) {
-            
-            System.out.println(FileReader.arrList.toString());
-            
-        } else if (input == 2) {
 
+            System.out.println(FileReader.arrСatalog.toString());
+
+        } else if (input == 2) {
+            addFoldingBikeQuestions();
         } else if (input == 3) {
 
         } else if (input == 4) {
@@ -40,7 +41,21 @@ public class UserInput {
         } else if (input == 6) {
 
         } else if (input == 7) {
+            exit(0);
+        }
+    }
 
+    public static void addFoldingBikeQuestions() {
+        String[] str = {"brand",
+            "The maximum speed",
+            "The weight of the e-bike (in grams)",
+            "The availability of lights at front and back (TRUE/FALSE)",
+            "The battery capacity (in mAh)",
+            "A color",
+            "The price",};
+        for (int a = 0; a <= 7; a++) {
+            System.out.println(str[a]);
+            String ba = scan.nextLine();
         }
     }
 

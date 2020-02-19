@@ -29,11 +29,11 @@ public class Speedelec {
     @Override
     public String toString() {
         return brand + ", speed=" + speed
-                + ", weight=" + weight
-                + ", availability=" + availability
-                + ", battery=" + battery
-                + ", color=" + color
-                + " Price: " + price + "euros.\n";
+                 + " the weight " + weight + " grams"
+                + " and " + availability
+                + " with " + battery + " mAh battery"
+                + " in " + color + " color. \n"
+                + " Price: " + price + " euros.\n";
     }
 
     @Override

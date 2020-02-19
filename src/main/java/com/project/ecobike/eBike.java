@@ -28,12 +28,12 @@ public class eBike {
 
     @Override
     public String toString() {
-        return brand + ", speed=" + speed 
-                + ", weight=" + weight 
-                + ", availability=" + availability 
-                + ", battery=" + battery 
-                + ", color=" + color 
-                + " Price: " + price + "euros.\n";
+        return brand + ", speed=" + speed
+                + " the weight " + weight + " grams"
+                + " and " + availability
+                + " with " + battery + " mAh battery"
+                + " in " + color + " color. \n"
+                + " Price: " + price + " euros.\n";
     }
 
     @Override
@@ -77,6 +77,5 @@ public class eBike {
         }
         return true;
     }
-    
-    
+
 }
