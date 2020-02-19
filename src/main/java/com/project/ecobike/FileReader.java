@@ -34,7 +34,7 @@ public class FileReader {
             BufferedReader read = Files.newBufferedReader(Paths.get("C:\\Users\\mrbud\\Downloads\\Quality Unit Ukraine\\ecobike.txt"));
 
             while ((current = read.readLine()) != null) {
-                strArr = read.readLine().split("\\;");
+                strArr = current.split("\\;");
                 if (current.contains("SPEEDELEC")) {
                     Speedelec speedelec = new Speedelec(strArr[0],
                             Integer.parseInt((strArr[1]).strip()),

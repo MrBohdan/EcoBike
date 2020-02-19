@@ -1,5 +1,7 @@
 package com.project.ecobike;
 
+import java.util.Objects;
+
 /**
  *
  * @author Bohdan Skrypnyk
@@ -26,7 +28,54 @@ public class FoldingBike {
 
     @Override
     public String toString() {
-        return "FoldingBike{" + "brand=" + brand + ", sizeWheels=" + sizeWheels + ", gears=" + gears + ", weight=" + weight + ", availability=" + availability + ", color=" + color + ", price=" + price + '}';
+        return brand + ", sizeWheels=" + sizeWheels
+                + ", gears=" + gears
+                + ", weight=" + weight
+                + ", availability=" + availability
+                + ", color=" + color
+                + " Price: " + price + "euros.\n";
     }
-    
+
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final FoldingBike other = (FoldingBike) obj;
+        if (this.sizeWheels != other.sizeWheels) {
+            return false;
+        }
+        if (this.gears != other.gears) {
+            return false;
+        }
+        if (this.weight != other.weight) {
+            return false;
+        }
+        if (this.price != other.price) {
+            return false;
+        }
+        if (!Objects.equals(this.brand, other.brand)) {
+            return false;
+        }
+        if (!Objects.equals(this.availability, other.availability)) {
+            return false;
+        }
+        if (!Objects.equals(this.color, other.color)) {
+            return false;
+        }
+        return true;
+    }
+
 }
