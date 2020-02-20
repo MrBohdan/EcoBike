@@ -33,7 +33,7 @@ public class Speedelec {
                 + " and " + availability
                 + " with " + battery + " mAh battery"
                 + " in " + color + " color. \n"
-                + " Price: " + price + " euros.\n";
+                + " Price: " + price + " euros.";
     }
 
     @Override

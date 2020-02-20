@@ -12,7 +12,8 @@ public class UserInput {
     private static Scanner scan = new Scanner(System.in);
     private static AddNewBikes addNewBikes = new AddNewBikes();
     private static Validation validate = new Validation();
-    
+    private static FileReader fileReader = new FileReader();
+
     public static void dispalyMenu() {
         System.out.println("Please make your choice:\n"
                 + "1 - Show the entire EcoBike catalog\n"
@@ -29,15 +30,16 @@ public class UserInput {
 
     private static void selector(int input) {
         if (input == 1) {
-
-            System.out.println(FileReader.arrСatalog.toString());
+            for (Object objects : fileReader.arrCatalogue) {
+                System.out.println(objects.toString());
+            }
             dispalyMenu();
         } else if (input == 2) {
             foldingQuestions();
         } else if (input == 3) {
             speedelecQuestions();
         } else if (input == 4) {
-
+            eBikeQuestions();
         } else if (input == 5) {
 
         } else if (input == 6) {

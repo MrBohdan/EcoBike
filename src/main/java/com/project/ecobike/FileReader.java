@@ -14,7 +14,7 @@ import java.util.logging.Logger;
  */
 public class FileReader {
 
-    public static ArrayList<String> arrСatalog = new ArrayList<>();
+    public static ArrayList<Object> arrCatalogue = new ArrayList<>();
     public static String[] itemArr;
     public static String current;
 
@@ -43,7 +43,7 @@ public class FileReader {
                             Integer.parseInt((itemArr[4]).strip()),
                             itemArr[5].strip(),
                             Integer.parseInt((itemArr[6]).strip()));
-                    arrСatalog.add(speedelec.toString());
+                    arrCatalogue.add(speedelec);
                 } else if (current.contains("E-BIKE")) {
                     eBike ebike = new eBike(itemArr[0],
                             Integer.parseInt((itemArr[1]).strip()),
@@ -52,7 +52,7 @@ public class FileReader {
                             Integer.parseInt((itemArr[4]).strip()),
                             itemArr[5].strip(),
                             Integer.parseInt((itemArr[6]).strip()));
-                    arrСatalog.add(ebike.toString());
+                    arrCatalogue.add(ebike);
                 } else if (current.contains("FOLDING")) {
                     FoldingBike foldingBike = new FoldingBike(itemArr[0],
                             Integer.parseInt((itemArr[1]).strip()),
@@ -61,7 +61,7 @@ public class FileReader {
                             checkAvailability(itemArr[4].strip()),
                             itemArr[5].strip(),
                             Integer.parseInt((itemArr[6]).strip()));
-                    arrСatalog.add(foldingBike.toString());
+                    arrCatalogue.add(foldingBike);
                 }
             }
         } catch (IOException ex) {
