@@ -3,6 +3,7 @@ package com.project.ecobike;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -29,9 +30,9 @@ public class FileReader {
      * @strArr[5] color
      * @strArr[6] price
      */
-    public static void readFile() {
+    public static void readFile(Path url) {
         try {
-            BufferedReader read = Files.newBufferedReader(Paths.get("C:\\Users\\mrbud\\Downloads\\Quality Unit Ukraine\\ecobike.txt"));
+            BufferedReader read = Files.newBufferedReader(Paths.get(url.toUri()));
 
             while ((current = read.readLine()) != null) {
                 itemArr = current.split("\\;");

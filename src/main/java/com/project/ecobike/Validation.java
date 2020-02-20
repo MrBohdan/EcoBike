@@ -1,5 +1,8 @@
 package com.project.ecobike;
 
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Scanner;
 
 /**
@@ -11,11 +14,10 @@ public class Validation {
     private static Scanner scan = new Scanner(System.in);
 
     public static String validatorAvailable(String value) {
-        String input;
         validatorInteger(value);
         if (!value.matches("\\d+") || (Integer.parseInt(value) != 1 && Integer.parseInt(value) != 2)) {
-            input = dispalyErrorMessage(value);
-            validatorAvailable(input);
+            value = dispalyErrorMessage(value);
+            validatorAvailable(value);
         } else if (Integer.parseInt(value) == 1) {
             return value = "true";
         } else if (Integer.parseInt(value) == 2) {
@@ -50,5 +52,18 @@ public class Validation {
         scan.reset();
         value = scan.nextLine();
         return value;
+    }
+
+    public static Path validatorPath(Path value) {
+
+        if (!Files.isRegularFile(value)) {
+            pathErrorMessage();
+            value = validatorPath(Paths.get(scan.nextLine()));
+        }
+        return value;
+    }
+
+    public static void pathErrorMessage() {
+        System.out.println("Error: Wrong path to file, plese provide in format \"path/fileName.txt\"");
     }
 }

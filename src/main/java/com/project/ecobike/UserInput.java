@@ -1,6 +1,9 @@
 package com.project.ecobike;
 
 import static java.lang.System.exit;
+import java.nio.file.InvalidPathException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Scanner;
 
 /**
@@ -13,6 +16,18 @@ public class UserInput {
     private static AddNewBikes addNewBikes = new AddNewBikes();
     private static Validation validate = new Validation();
     private static FileReader fileReader = new FileReader();
+    private static Path url;
+
+    public static void pathQuestion() {
+        try {
+            System.out.println("Please, provide a Path to the file:");
+            url = validate.validatorPath(Paths.get(scan.nextLine()));
+            fileReader.readFile(url);
+        } catch (InvalidPathException ex) {
+            validate.pathErrorMessage();
+            pathQuestion();
+        }
+    }
 
     public static void dispalyMenu() {
         System.out.println("Please make your choice:\n"
@@ -25,10 +40,10 @@ public class UserInput {
                 + "7 – Stop the program");
         String valInput = validate.validatorMenu(scan.nextLine());
         int input = Integer.parseInt(valInput);
-        selector(input);
+        selectorMenu(input);
     }
 
-    private static void selector(int input) {
+    private static void selectorMenu(int input) {
         if (input == 1) {
             for (Object objects : fileReader.arrCatalogue) {
                 System.out.println(objects.toString());
