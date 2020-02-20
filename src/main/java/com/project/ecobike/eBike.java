@@ -28,9 +28,9 @@ public class eBike {
 
     @Override
     public String toString() {
-        return brand + ", speed=" + speed
+        return brand + " has maximum speed " + speed +" km/h"
                 + " the weight " + weight + " grams"
-                + " and " + availability
+                + " and " + availability + ","
                 + " with " + battery + " mAh battery"
                 + " in " + color + " color. \n"
                 + " Price: " + price + " euros.";

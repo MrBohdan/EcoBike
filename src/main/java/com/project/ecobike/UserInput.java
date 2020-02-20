@@ -36,10 +36,13 @@ public class UserInput {
             dispalyMenu();
         } else if (input == 2) {
             foldingQuestions();
+            dispalyMenu();
         } else if (input == 3) {
             speedelecQuestions();
+            dispalyMenu();
         } else if (input == 4) {
             eBikeQuestions();
+            dispalyMenu();
         } else if (input == 5) {
 
         } else if (input == 6) {
@@ -51,19 +54,18 @@ public class UserInput {
 
     public static void foldingQuestions() {
         String[] itemArr = {"What is the brand of the bike?",
-            "What is the maximum speed?",
             "What is the size of the wheels, in inch?",
             "What is the number of gears?",
             "What is the weight of the bike in grams?",
             "There is available lights at front and back?\n Please make your choice:\n[1]Available\n[2]Not Available",
             "What is the colour of bike?",
             "What is the price?"};
-        String[] answers = new String[8];
-        for (int a = 0; a < 8; a++) {
-            if (a == 5) {
+        String[] answers = new String[7];
+        for (int a = 0; a < 7; a++) {
+            if (a == 4) {
                 System.out.println(itemArr[a]);
                 answers[a] = validate.validatorAvailable(scan.nextLine());
-            } else if ((a >= 1 && a <= 4) || a == 7) {
+            } else if (a == 1 || a == 2 || a == 3 || a == 6) {
                 System.out.println(itemArr[a]);
                 answers[a] = validate.validatorInteger(scan.nextLine());
             } else {

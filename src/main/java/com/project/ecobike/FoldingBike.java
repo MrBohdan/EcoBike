@@ -28,10 +28,10 @@ public class FoldingBike {
 
     @Override
     public String toString() {
-        return brand + "with the size of the wheels " + sizeWheels + " inches,"
+        return brand + " with the size of the wheels " + sizeWheels + " inches,"
                 + " with " + gears + " gear(s)"
                 + " the weight " + weight + " grams"
-                + " and " + availability
+                + " and " + availability + ","
                 + " in " + color + " color. \n"
                 + " Price: " + price + " euros.";
     }

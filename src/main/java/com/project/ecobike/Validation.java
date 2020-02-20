@@ -25,24 +25,22 @@ public class Validation {
     }
 
     public static String validatorMenu(String value) {
-        String input;
-        validatorInteger(value);
+        value = validatorInteger(value);
         if (!value.matches("\\d+") || Integer.parseInt(value) > 7 || Integer.parseInt(value) < 1) {
-            input = dispalyErrorMessage(value);
-            input = validatorMenu(input);
-            return input;
+            value = dispalyErrorMessage(value);
+            value = validatorMenu(value);
+            return value;
         } else {
-            return input = value;
+            return value;
         }
     }
 
     public static String validatorInteger(String value) {
-        String input;
         try {
             Integer.parseInt(value);
         } catch (NumberFormatException e) {
-            input = dispalyErrorMessage(value);
-            input = validatorInteger(input);
+            value = dispalyErrorMessage(value);
+            value = validatorInteger(value);
         }
         return value;
     }
