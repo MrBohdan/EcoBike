@@ -6,29 +6,81 @@ import java.util.Objects;
  *
  * @author Bohdan Skrypnyk
  */
-public class eBike {
+public class eBike extends Bikes{
 
-    public String brand;
     public int speed;
-    public int weight;
-    public String availability;
     public int battery;
-    public String color;
-    public int price;
+    
 
-    public eBike(String brand, int speed, int weight, String availability, int battery, String color, int price) {
-        this.brand = brand;
+    @Override
+    public String getBrand() {
+        return brand;
+    }
+
+    public int getSpeed() {
+        return speed;
+    }
+
+    @Override
+    public int getWeight() {
+        return weight;
+    }
+
+    @Override
+    public String getAvailability() {
+        return availability;
+    }
+
+    public int getBattery() {
+        return battery;
+    }
+
+    @Override
+    public String getColor() {
+        return color;
+    }
+
+    @Override
+    public int getPrice() {
+        return price;
+    }
+
+    public void setSpeed(int speed) {
         this.speed = speed;
+    }
+
+    @Override
+    public void setWeight(int weight) {
         this.weight = weight;
+    }
+
+    @Override
+    public void setAvailability(String availability) {
         this.availability = availability;
+    }
+
+    public void setBattery(int battery) {
         this.battery = battery;
+    }
+
+    @Override
+    public void setColor(String color) {
         this.color = color;
+    }
+
+    @Override
+    public void setBrand(String brand) {
+        this.brand = brand;
+    }
+
+    @Override
+    public void setPrice(int price) {
         this.price = price;
     }
 
     @Override
     public String toString() {
-        return brand + " has maximum speed " + speed +" km/h"
+        return brand + " has maximum speed " + speed + " km/h"
                 + " the weight " + weight + " grams"
                 + " and " + availability + ","
                 + " with " + battery + " mAh battery"

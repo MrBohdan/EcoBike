@@ -6,23 +6,74 @@ import java.util.Objects;
  *
  * @author Bohdan Skrypnyk
  */
-public class FoldingBike {
+public class FoldingBike extends Bikes {
 
-    public String brand;
     public int sizeWheels;
     public int gears;
-    public int weight;
-    public String availability;
-    public String color;
-    public int price;
 
-    public FoldingBike(String brand, int sizeWheels, int gears, int weight, String availability, String color, int price) {
+    @Override
+    public String getBrand() {
+        return brand;
+    }
+
+    public int getSizeWheels() {
+        return sizeWheels;
+    }
+
+    public int getGears() {
+        return gears;
+    }
+
+    @Override
+    public int getWeight() {
+        return weight;
+    }
+
+    @Override
+    public String getAvailability() {
+        return availability;
+    }
+
+    @Override
+    public String getColor() {
+        return color;
+    }
+
+    @Override
+    public int getPrice() {
+        return price;
+    }
+
+    @Override
+    public void setBrand(String brand) {
         this.brand = brand;
+    }
+
+    public void setSizeWheels(int sizeWheels) {
         this.sizeWheels = sizeWheels;
+    }
+
+    public void setGears(int gears) {
         this.gears = gears;
+    }
+
+    @Override
+    public void setWeight(int weight) {
         this.weight = weight;
+    }
+
+    @Override
+    public void setAvailability(String availability) {
         this.availability = availability;
+    }
+
+    @Override
+    public void setColor(String color) {
         this.color = color;
+    }
+
+    @Override
+    public void setPrice(int price) {
         this.price = price;
     }
 

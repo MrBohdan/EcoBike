@@ -7,7 +7,7 @@ import java.util.Scanner;
 
 /**
  *
- * @author Budda
+ * @author Bohdan Skrypnyk
  */
 public class Validation {
 

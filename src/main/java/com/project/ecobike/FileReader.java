@@ -6,6 +6,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -15,21 +16,12 @@ import java.util.logging.Logger;
  */
 public class FileReader {
 
-    public static ArrayList<Object> arrCatalogue = new ArrayList<>();
+    public static Bikes bikes = new Bikes();
+    public static Speedelec speedelec = new Speedelec();
+    public static List<Bikes> arrBikes = new ArrayList<Bikes>();
     public static String[] itemArr;
-    public static String current;
+    private static String current;
 
-    /**
-     * eBike & Speedelec / FoldingBike
-     *
-     * @strArr[0] brand
-     * @strArr[1] speed / sizeWheels
-     * @strArr[2] weight / gears
-     * @strArr[3] availability / weight
-     * @strArr[4] battery / availability
-     * @strArr[5] color
-     * @strArr[6] price
-     */
     public static void readFile(Path url) {
         try {
             BufferedReader read = Files.newBufferedReader(Paths.get(url.toUri()));
@@ -37,32 +29,11 @@ public class FileReader {
             while ((current = read.readLine()) != null) {
                 itemArr = current.split("\\;");
                 if (current.contains("SPEEDELEC")) {
-                    Speedelec speedelec = new Speedelec(itemArr[0],
-                            Integer.parseInt((itemArr[1]).strip()),
-                            Integer.parseInt((itemArr[2]).strip()),
-                            checkAvailability(itemArr[3].strip()),
-                            Integer.parseInt((itemArr[4]).strip()),
-                            itemArr[5].strip(),
-                            Integer.parseInt((itemArr[6]).strip()));
-                    arrCatalogue.add(speedelec);
+                    arrBikes.add(bikes.speedelecConstructor(itemArr));
                 } else if (current.contains("E-BIKE")) {
-                    eBike ebike = new eBike(itemArr[0],
-                            Integer.parseInt((itemArr[1]).strip()),
-                            Integer.parseInt((itemArr[2]).strip()),
-                            checkAvailability(itemArr[3].strip()),
-                            Integer.parseInt((itemArr[4]).strip()),
-                            itemArr[5].strip(),
-                            Integer.parseInt((itemArr[6]).strip()));
-                    arrCatalogue.add(ebike);
+                    arrBikes.add(bikes.ebikeConstructor(itemArr));
                 } else if (current.contains("FOLDING")) {
-                    FoldingBike foldingBike = new FoldingBike(itemArr[0],
-                            Integer.parseInt((itemArr[1]).strip()),
-                            Integer.parseInt((itemArr[2]).strip()),
-                            Integer.parseInt((itemArr[3]).strip()),
-                            checkAvailability(itemArr[4].strip()),
-                            itemArr[5].strip(),
-                            Integer.parseInt((itemArr[6]).strip()));
-                    arrCatalogue.add(foldingBike);
+                    arrBikes.add(bikes.foldingBikeConstructor(itemArr));
                 }
             }
         } catch (IOException ex) {

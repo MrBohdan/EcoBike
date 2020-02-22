@@ -12,9 +12,11 @@ import java.util.Scanner;
  */
 public class UserInput {
 
-    private static Scanner scan = new Scanner(System.in);
-    private static AddNewBikes addNewBikes = new AddNewBikes();
+    private static addNewBikes addNewBikes = new addNewBikes();
     private static Validation validate = new Validation();
+    private static Search search = new Search();
+
+    private static Scanner scan = new Scanner(System.in);
     private static FileReader fileReader = new FileReader();
     private static Path url;
 
@@ -30,7 +32,7 @@ public class UserInput {
     }
 
     public static void dispalyMenu() {
-        System.out.println("Please make your choice:\n"
+        System.out.println("\nPlease make your choice:\n"
                 + "1 - Show the entire EcoBike catalog\n"
                 + "2 – Add a new folding bike\n"
                 + "3 – Add a new speedelec\n"
@@ -45,9 +47,7 @@ public class UserInput {
 
     private static void selectorMenu(int input) {
         if (input == 1) {
-            for (Object objects : fileReader.arrCatalogue) {
-                System.out.println(objects.toString());
-            }
+            fileReader.arrBikes.forEach((System.out::println));
             dispalyMenu();
         } else if (input == 2) {
             foldingQuestions();
@@ -59,7 +59,7 @@ public class UserInput {
             eBikeQuestions();
             dispalyMenu();
         } else if (input == 5) {
-
+            searchQuestions();
         } else if (input == 6) {
 
         } else if (input == 7) {
@@ -67,11 +67,21 @@ public class UserInput {
         }
     }
 
+    public static void searchQuestions() {
+        String[] itemArr = {"What is the brand of the bike?"};
+        String[] answers = new String[1];
+        for (int a = 0; a < 1; a++) {
+            System.out.println(itemArr[a]);
+            answers[a] = scan.nextLine();
+        }
+        search.fndItem();
+    }
+
     public static void foldingQuestions() {
         String[] itemArr = {"What is the brand of the bike?",
             "What is the size of the wheels, in inch?",
             "What is the number of gears?",
-            "What is the weight of the bike in grams?",
+            "What is the weight of the bike, in grams?",
             "There is available lights at front and back?\n Please make your choice:\n[1]Available\n[2]Not Available",
             "What is the colour of bike?",
             "What is the price?"};
@@ -94,7 +104,7 @@ public class UserInput {
     public static void speedelecQuestions() {
         String[] itemArr = {"What is the brand of the bike?",
             "What is the maximum speed?",
-            "What is the weight of the bike in grams?",
+            "What is the weight of the bike, in grams?",
             "There is available lights at front and back?\n Please make your choice:\n[1]Available\n[2]Not Available",
             "What is the battery capacity, in mAh?",
             "What is the colour of bike?",
@@ -112,13 +122,13 @@ public class UserInput {
                 answers[a] = scan.nextLine();
             }
         }
-        addNewBikes.AddSpeedelec(answers);
+        addNewBikes.addSpeedelec(answers);
     }
 
     public static void eBikeQuestions() {
         String[] itemArr = {"What is the brand of the bike?",
             "What is the maximum speed?",
-            "What is the weight of the bike in grams?",
+            "What is the weight of the bike, in grams?",
             "There is available lights at front and back?\n Please make your choice:\n[1]Available\n[2]Not Available",
             "What is the battery capacity, in mAh?",
             "What is the colour of bike?",
@@ -136,6 +146,6 @@ public class UserInput {
                 answers[a] = scan.nextLine();
             }
         }
-        addNewBikes.AddEbike(answers);
+        addNewBikes.addEbike(answers);
     }
 }
