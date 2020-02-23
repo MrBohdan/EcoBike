@@ -65,18 +65,20 @@ public class UserInput {
             validate.checkSearchActivity();
             searchQuestions();
         } else if (input == 6) {
+            validate.checkSearchActivity();
             fileReader.writeFile(url);
             dispalyMenu();
         } else if (input == 7) {
-            exit(0);
+            ifNotSaved();
         }
     }
 
-    public static String[] searchAnswers = new String[1];
+    public static String[] searchAnswers = new String[2];
 
-    public static void searchQuestions() {
-        String[] itemArr = {"What is the brand of the bike?"};
-        for (int a = 0; a < 1; a++) {
+    private static void searchQuestions() {
+        String[] itemArr = {"What is the brand of the bike?",
+            "What is the colour of bike?",};
+        for (int a = 0; a < 2; a++) {
             System.out.println(itemArr[a]);
             searchAnswers[a] = scan.nextLine();
         }
@@ -84,12 +86,15 @@ public class UserInput {
         dispalyMenu();
     }
 
-    public static void foldingQuestions() {
+    private static void foldingQuestions() {
         String[] itemArr = {"What is the brand of the bike?",
             "What is the size of the wheels, in inch?",
             "What is the number of gears?",
             "What is the weight of the bike, in grams?",
-            "There is available lights at front and back?\n Please make your choice:\n[1]Available\n[2]Not Available",
+            "There is available lights at front and back?"
+            + "\n Please make your choice:"
+            + "\n1 - Available"
+            + "\n2 - Not Available",
             "What is the colour of bike?",
             "What is the price?"};
         String[] answers = new String[7];
@@ -108,11 +113,14 @@ public class UserInput {
         addNewBikes.addFolding(answers);
     }
 
-    public static void speedelecQuestions() {
+    private static void speedelecQuestions() {
         String[] itemArr = {"What is the brand of the bike?",
             "What is the maximum speed?",
             "What is the weight of the bike, in grams?",
-            "There is available lights at front and back?\n Please make your choice:\n[1]Available\n[2]Not Available",
+            "There is available lights at front and back?"
+            + "\n Please make your choice:"
+            + "\n1 - Available"
+            + "\n2 - Not Available",
             "What is the battery capacity, in mAh?",
             "What is the colour of bike?",
             "What is the price?"};
@@ -132,11 +140,14 @@ public class UserInput {
         addNewBikes.addSpeedelec(answers);
     }
 
-    public static void eBikeQuestions() {
+    private static void eBikeQuestions() {
         String[] itemArr = {"What is the brand of the bike?",
             "What is the maximum speed?",
             "What is the weight of the bike, in grams?",
-            "There is available lights at front and back?\n Please make your choice:\n[1]Available\n[2]Not Available",
+            "There is available lights at front and back?"
+            + "\n Please make your choice:"
+            + "\n1 - Available"
+            + "\n2 - Not Available",
             "What is the battery capacity, in mAh?",
             "What is the colour of bike?",
             "What is the price?"};
@@ -154,5 +165,31 @@ public class UserInput {
             }
         }
         addNewBikes.addEbike(answers);
+    }
+
+    private static void ifNotSaved() {
+        AddNewBikes addNewBikes = new AddNewBikes();
+        if (addNewBikes.arrListAddedBikes.isEmpty()) {
+            exit(0);
+        } else {
+            System.out.println("You didnt save new items! "
+                    + "\n1 - Save and exit"
+                    + "\n2 - Back to menu"
+                    + "\n3 - Exit");
+            String valInput = validate.validatorifNotSaved(scan.nextLine());
+            int input = Integer.parseInt(valInput);
+            if (input == 1) {
+                validate.checkSearchActivity();
+                fileReader.writeFile(url);
+                exit(0);
+            } else if (input == 2) {
+                dispalyMenu();
+            } else if (input == 3) {
+                exit(0);
+            } else {
+                ifNotSaved();
+            }
+        }
+
     }
 }

@@ -35,6 +35,7 @@ public class Multithreading {
         UserInput userInput = new UserInput();
         synchronized (searchThread) {
             searchThread.start();
+            searchActivity = searchThread.isAlive();
             validate.searchStatus();
             userInput.dispalyMenu();
 

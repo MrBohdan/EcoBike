@@ -13,7 +13,6 @@ public class Validation {
 
     private static Multithreading multithreading = new Multithreading();
     private static UserInput userInput = new UserInput();
-    private static SearchThread searchThread = new SearchThread();
     private static Scanner scan = new Scanner(System.in);
 
     public static String validatorAvailable(String value) {
@@ -27,6 +26,16 @@ public class Validation {
             return value = "false";
         }
         return value;
+    }
+
+    public static String validatorifNotSaved(String value) {
+        value = validatorInteger(value);
+        if (!value.matches("\\d+") || Integer.parseInt(value) > 3 || Integer.parseInt(value) < 0) {
+            value = dispalyErrorMessage(value);
+            return validatorifNotSaved(value);
+        } else {
+            return value;
+        }
     }
 
     public static String validatorMenu(String value) {
@@ -92,13 +101,11 @@ public class Validation {
         }
     }
 
-    public static void searchStatus() {
-        multithreading.searchActivity = searchThread.isAlive();
+    public static void searchStatus() {      
         if (multithreading.searchActivity == true) {
             System.out.println("\nSearch is running");
         } else {
             System.out.println("\nSearch complited");
         }
     }
-
 }
