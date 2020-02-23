@@ -47,6 +47,7 @@ public class FileProcessor {
     }
 
     public static void writeFile(Path url) {
+        validation.validatorArrListAddedBikes();
         try {
             BufferedWriter writer = new BufferedWriter(new FileWriter(Paths.get(url.toUri()).toString(), true));
             for (Bikes bike : addNewBikes.arrListAddedBikes) {
@@ -58,7 +59,7 @@ public class FileProcessor {
                             + validation.checkAvailability(speedelec.getAvailability()) + "; "
                             + speedelec.getBattery() + "; "
                             + speedelec.getColor() + "; "
-                            + speedelec.getPrice() 
+                            + speedelec.getPrice()
                             + System.lineSeparator());
                 }
                 if (bike instanceof eBike) {
@@ -84,7 +85,7 @@ public class FileProcessor {
                             + System.lineSeparator());
                 }
             }
-            writer.newLine();
+            addNewBikes.arrListAddedBikes.clear();
             writer.close();
         } catch (IOException ex) {
             Logger.getLogger(FileProcessor.class.getName()).log(Level.SEVERE, null, ex);

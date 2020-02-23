@@ -80,7 +80,11 @@ public class UserInput {
             "What is the colour of bike?",};
         for (int a = 0; a < 2; a++) {
             System.out.println(itemArr[a]);
-            searchAnswers[a] = scan.nextLine();
+            if (a == 0) {
+                searchAnswers[a] = validate.validatorSearchQuestions(scan.nextLine());
+            } else {
+                searchAnswers[a] = scan.nextLine();
+            }
         }
         multithreading.runThreads();
         dispalyMenu();

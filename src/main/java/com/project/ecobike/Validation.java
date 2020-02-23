@@ -1,5 +1,6 @@
 package com.project.ecobike;
 
+import static com.project.ecobike.FileProcessor.addNewBikes;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -17,9 +18,9 @@ public class Validation {
 
     public static String validatorAvailable(String value) {
         validatorInteger(value);
-        if (!value.matches("\\d+") || (Integer.parseInt(value) != 1 && Integer.parseInt(value) != 2)) {
+        if (Integer.parseInt(value) != 1 && Integer.parseInt(value) != 2) {
             value = dispalyErrorMessage(value);
-            validatorAvailable(value);
+            value = validatorAvailable(value);
         } else if (Integer.parseInt(value) == 1) {
             return value = "true";
         } else if (Integer.parseInt(value) == 2) {
@@ -89,9 +90,10 @@ public class Validation {
             return value = "no head/tail light";
         } else if (value.equals("head/tail light")) {
             return value = "true";
-        } else {
+        } else if (value.equals("no head/tail light")) {
             return value = "false";
         }
+        return null;
     }
 
     public static void checkSearchActivity() {
@@ -101,11 +103,28 @@ public class Validation {
         }
     }
 
-    public static void searchStatus() {      
+    public static void searchStatus() {
         if (multithreading.searchActivity == true) {
             System.out.println("\nSearch is running");
         } else {
             System.out.println("\nSearch complited");
+        }
+    }
+
+    public static String validatorSearchQuestions(String value) {
+        if (!value.isEmpty()) {
+            return value;
+        } else {
+            System.out.println("Error : Brand cannot be empty");
+            value = scan.nextLine();
+            return value = validatorSearchQuestions(value);
+        }
+    }
+
+    public static void validatorArrListAddedBikes() {
+        if (addNewBikes.arrListAddedBikes.isEmpty()) {
+            System.out.println("Nothing to save");
+            userInput.dispalyMenu();
         }
     }
 }
