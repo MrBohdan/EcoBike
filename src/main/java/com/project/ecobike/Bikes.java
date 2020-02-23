@@ -94,41 +94,60 @@ public class Bikes {
 
 class BikesConstructors {
 
-    public static Validation validation = new Validation();
+    private static Validation validation = new Validation();
+    private static UserInput userInput = new UserInput();
 
     public static Speedelec speedelecConstructor(String[] itemArr) {
         Speedelec speedelec = new Speedelec();
-        speedelec.setBrand(itemArr[0].strip());
-        speedelec.setSpeed(Integer.parseInt(itemArr[1].strip()));
-        speedelec.setWeight(Integer.parseInt(itemArr[2].strip()));
-        speedelec.setAvailability(validation.checkAvailability(itemArr[3].strip()));
-        speedelec.setBattery(Integer.parseInt(itemArr[4].strip()));
-        speedelec.setColor(itemArr[5].strip());
-        speedelec.setPrice(Integer.parseInt(itemArr[6].strip()));
+        try {
+            speedelec.setBrand(itemArr[0].strip());
+            speedelec.setSpeed(Integer.parseInt(itemArr[1].strip()));
+            speedelec.setWeight(Integer.parseInt(itemArr[2].strip()));
+            speedelec.setAvailability(validation.checkAvailability(itemArr[3].strip()));
+            speedelec.setBattery(Integer.parseInt(itemArr[4].strip()));
+            speedelec.setColor(itemArr[5].strip());
+            speedelec.setPrice(Integer.parseInt(itemArr[6].strip()));
+        } catch (ArrayIndexOutOfBoundsException ex) {
+            System.out.println("Oops, something went wrong. Please, check file");
+            userInput.pathQuestion();
+            userInput.dispalyMenu();
+        }
         return speedelec;
     }
 
     public static eBike ebikeConstructor(String[] itemArr) {
         eBike ebike = new eBike();
-        ebike.setBrand(itemArr[0].strip());
-        ebike.setSpeed(Integer.parseInt(itemArr[1].strip()));
-        ebike.setWeight(Integer.parseInt(itemArr[2].strip()));
-        ebike.setAvailability(validation.checkAvailability(itemArr[3].strip()));
-        ebike.setBattery(Integer.parseInt(itemArr[4].strip()));
-        ebike.setColor(itemArr[5].strip());
-        ebike.setPrice(Integer.parseInt(itemArr[6].strip()));
+        try {
+            ebike.setBrand(itemArr[0].strip());
+            ebike.setSpeed(Integer.parseInt(itemArr[1].strip()));
+            ebike.setWeight(Integer.parseInt(itemArr[2].strip()));
+            ebike.setAvailability(validation.checkAvailability(itemArr[3].strip()));
+            ebike.setBattery(Integer.parseInt(itemArr[4].strip()));
+            ebike.setColor(itemArr[5].strip());
+            ebike.setPrice(Integer.parseInt(itemArr[6].strip()));
+        } catch (ArrayIndexOutOfBoundsException ex) {
+            System.out.println("Oops, something went wrong. Please, check file");
+            userInput.pathQuestion();
+            userInput.dispalyMenu();
+        }
         return ebike;
     }
 
     public static FoldingBike foldingBikeConstructor(String[] itemArr) {
         FoldingBike foldingBike = new FoldingBike();
-        foldingBike.setBrand(itemArr[0].strip());
-        foldingBike.setSizeWheels(Integer.parseInt((itemArr[1]).strip()));
-        foldingBike.setGears(Integer.parseInt((itemArr[2]).strip()));
-        foldingBike.setWeight(Integer.parseInt((itemArr[3]).strip()));
-        foldingBike.setAvailability(validation.checkAvailability(itemArr[4].strip()));
-        foldingBike.setColor(itemArr[5].strip());
-        foldingBike.setPrice(Integer.parseInt(itemArr[6].strip()));
+        try {
+            foldingBike.setBrand(itemArr[0].strip());
+            foldingBike.setSizeWheels(Integer.parseInt((itemArr[1]).strip()));
+            foldingBike.setGears(Integer.parseInt((itemArr[2]).strip()));
+            foldingBike.setWeight(Integer.parseInt((itemArr[3]).strip()));
+            foldingBike.setAvailability(validation.checkAvailability(itemArr[4].strip()));
+            foldingBike.setColor(itemArr[5].strip());
+            foldingBike.setPrice(Integer.parseInt(itemArr[6].strip()));
+        } catch (ArrayIndexOutOfBoundsException ex) {
+            System.out.println("Oops, something went wrong. Please, check file");
+            userInput.pathQuestion();
+            userInput.dispalyMenu();
+        }
         return foldingBike;
     }
 }

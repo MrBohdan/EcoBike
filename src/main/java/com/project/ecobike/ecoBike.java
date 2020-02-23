@@ -6,8 +6,9 @@ package com.project.ecobike;
  */
 public class ecoBike {
 
+    private static UserInput userInput = new UserInput();
+
     public static void main(String[] args) {
-        UserInput userInput = new UserInput();
         userInput.pathQuestion();
         userInput.dispalyMenu();
     }

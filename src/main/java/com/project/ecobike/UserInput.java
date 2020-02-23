@@ -12,12 +12,12 @@ import java.util.Scanner;
  */
 public class UserInput {
 
-    private static addNewBikes addNewBikes = new addNewBikes();
+    private static AddNewBikes addNewBikes = new AddNewBikes();
     private static Validation validate = new Validation();
     private static Multithreading multithreading = new Multithreading();
 
     private static Scanner scan = new Scanner(System.in);
-    private static FileReader fileReader = new FileReader();
+    private static FileProcessor fileReader = new FileProcessor();
     private static Path url;
 
     public static void pathQuestion() {
@@ -40,14 +40,9 @@ public class UserInput {
                 + "5 – Find the first item of a particular brand\n"
                 + "6 – Write to file\n"
                 + "7 – Stop the program");
-        try {
-            String valInput = validate.validatorMenu(scan.nextLine());
-            int input = Integer.parseInt(valInput);
-            selectorMenu(input);
-        } catch (IndexOutOfBoundsException e) {
-             System.out.println("asssssssssssssssssssssssssssssssssssssssssssss" + e);
-        }
-
+        String valInput = validate.validatorMenu(scan.nextLine());
+        int input = Integer.parseInt(valInput);
+        selectorMenu(input);
     }
 
     private static void selectorMenu(int input) {
@@ -70,21 +65,23 @@ public class UserInput {
             validate.checkSearchActivity();
             searchQuestions();
         } else if (input == 6) {
-
+            fileReader.writeFile(url);
+            dispalyMenu();
         } else if (input == 7) {
             exit(0);
         }
     }
 
+    public static String[] searchAnswers = new String[1];
+
     public static void searchQuestions() {
         String[] itemArr = {"What is the brand of the bike?"};
-        //  String[] answers = new String[1];
         for (int a = 0; a < 1; a++) {
             System.out.println(itemArr[a]);
-            // answers[a] = scan.nextLine();
+            searchAnswers[a] = scan.nextLine();
         }
-        multithreading.run();
-//        dispalyMenu();
+        multithreading.runThreads();
+        dispalyMenu();
     }
 
     public static void foldingQuestions() {

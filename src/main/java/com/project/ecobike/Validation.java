@@ -13,7 +13,7 @@ public class Validation {
 
     private static Multithreading multithreading = new Multithreading();
     private static UserInput userInput = new UserInput();
-
+    private static SearchThread searchThread = new SearchThread();
     private static Scanner scan = new Scanner(System.in);
 
     public static String validatorAvailable(String value) {
@@ -74,11 +74,14 @@ public class Validation {
     }
 
     public static String checkAvailability(String value) {
-        if (Boolean.parseBoolean(value) == true) {
+        if (value.equals("true")) {
             return value = "head/tail light";
-
-        } else {
+        } else if (value.equals("false")) {
             return value = "no head/tail light";
+        } else if (value.equals("head/tail light")) {
+            return value = "true";
+        } else {
+            return value = "false";
         }
     }
 
@@ -90,6 +93,7 @@ public class Validation {
     }
 
     public static void searchStatus() {
+        multithreading.searchActivity = searchThread.isAlive();
         if (multithreading.searchActivity == true) {
             System.out.println("\nSearch is running");
         } else {
