@@ -16,8 +16,8 @@ import java.util.logging.Logger;
  */
 public class FileReader {
 
-    public static Bikes bikes = new Bikes();
-    public static Speedelec speedelec = new Speedelec();
+    private static BikesConstructors BikesConstructors = new BikesConstructors();
+
     public static List<Bikes> arrBikes = new ArrayList<Bikes>();
     public static String[] itemArr;
     private static String current;
@@ -29,25 +29,15 @@ public class FileReader {
             while ((current = read.readLine()) != null) {
                 itemArr = current.split("\\;");
                 if (current.contains("SPEEDELEC")) {
-                    arrBikes.add(bikes.speedelecConstructor(itemArr));
+                    arrBikes.add(BikesConstructors.speedelecConstructor(itemArr));
                 } else if (current.contains("E-BIKE")) {
-                    arrBikes.add(bikes.ebikeConstructor(itemArr));
+                    arrBikes.add(BikesConstructors.ebikeConstructor(itemArr));
                 } else if (current.contains("FOLDING")) {
-                    arrBikes.add(bikes.foldingBikeConstructor(itemArr));
+                    arrBikes.add(BikesConstructors.foldingBikeConstructor(itemArr));
                 }
             }
         } catch (IOException ex) {
             Logger.getLogger(FileReader.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
-    public static String checkAvailability(String value) {
-        if (Boolean.parseBoolean(value) == true) {
-            return value = "head/tail light";
-
-        } else {
-            return value = "no head/tail light";
-        }
-    }
-
 }

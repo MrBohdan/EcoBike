@@ -11,6 +11,9 @@ import java.util.Scanner;
  */
 public class Validation {
 
+    private static Multithreading multithreading = new Multithreading();
+    private static UserInput userInput = new UserInput();
+
     private static Scanner scan = new Scanner(System.in);
 
     public static String validatorAvailable(String value) {
@@ -30,8 +33,7 @@ public class Validation {
         value = validatorInteger(value);
         if (!value.matches("\\d+") || Integer.parseInt(value) > 7 || Integer.parseInt(value) < 1) {
             value = dispalyErrorMessage(value);
-            value = validatorMenu(value);
-            return value;
+            return validatorMenu(value);
         } else {
             return value;
         }
@@ -44,14 +46,18 @@ public class Validation {
             value = dispalyErrorMessage(value);
             value = validatorInteger(value);
         }
+        if (Integer.parseInt(value) >= 0) {
+            return value;
+        } else {
+            value = dispalyErrorMessage(value);
+            value = validatorInteger(value);
+        }
         return value;
     }
 
     public static String dispalyErrorMessage(String value) {
         System.out.println("Error: Wrong Input");
-        scan.reset();
-        value = scan.nextLine();
-        return value;
+        return value = scan.nextLine();
     }
 
     public static Path validatorPath(Path value) {
@@ -66,4 +72,29 @@ public class Validation {
     public static void pathErrorMessage() {
         System.out.println("Error: Wrong path to file, plese provide in format \"path/fileName.txt\"");
     }
+
+    public static String checkAvailability(String value) {
+        if (Boolean.parseBoolean(value) == true) {
+            return value = "head/tail light";
+
+        } else {
+            return value = "no head/tail light";
+        }
+    }
+
+    public static void checkSearchActivity() {
+        if (multithreading.searchActivity == true) {
+            System.out.println("\nError: Sorry you are not allowed to add new item. While search is in the process");
+            userInput.dispalyMenu();
+        }
+    }
+
+    public static void searchStatus() {
+        if (multithreading.searchActivity == true) {
+            System.out.println("\nSearch is running");
+        } else {
+            System.out.println("\nSearch complited");
+        }
+    }
+
 }

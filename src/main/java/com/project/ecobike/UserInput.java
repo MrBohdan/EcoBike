@@ -14,7 +14,7 @@ public class UserInput {
 
     private static addNewBikes addNewBikes = new addNewBikes();
     private static Validation validate = new Validation();
-    private static Search search = new Search();
+    private static Multithreading multithreading = new Multithreading();
 
     private static Scanner scan = new Scanner(System.in);
     private static FileReader fileReader = new FileReader();
@@ -40,9 +40,14 @@ public class UserInput {
                 + "5 – Find the first item of a particular brand\n"
                 + "6 – Write to file\n"
                 + "7 – Stop the program");
-        String valInput = validate.validatorMenu(scan.nextLine());
-        int input = Integer.parseInt(valInput);
-        selectorMenu(input);
+        try {
+            String valInput = validate.validatorMenu(scan.nextLine());
+            int input = Integer.parseInt(valInput);
+            selectorMenu(input);
+        } catch (IndexOutOfBoundsException e) {
+             System.out.println("asssssssssssssssssssssssssssssssssssssssssssss" + e);
+        }
+
     }
 
     private static void selectorMenu(int input) {
@@ -50,15 +55,19 @@ public class UserInput {
             fileReader.arrBikes.forEach((System.out::println));
             dispalyMenu();
         } else if (input == 2) {
+            validate.checkSearchActivity();
             foldingQuestions();
             dispalyMenu();
         } else if (input == 3) {
+            validate.checkSearchActivity();
             speedelecQuestions();
             dispalyMenu();
         } else if (input == 4) {
+            validate.checkSearchActivity();
             eBikeQuestions();
             dispalyMenu();
         } else if (input == 5) {
+            validate.checkSearchActivity();
             searchQuestions();
         } else if (input == 6) {
 
@@ -69,12 +78,13 @@ public class UserInput {
 
     public static void searchQuestions() {
         String[] itemArr = {"What is the brand of the bike?"};
-        String[] answers = new String[1];
+        //  String[] answers = new String[1];
         for (int a = 0; a < 1; a++) {
             System.out.println(itemArr[a]);
-            answers[a] = scan.nextLine();
+            // answers[a] = scan.nextLine();
         }
-        search.fndItem();
+        multithreading.run();
+//        dispalyMenu();
     }
 
     public static void foldingQuestions() {
