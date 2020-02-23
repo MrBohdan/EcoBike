@@ -1,6 +1,5 @@
 package com.project.ecobike;
 
-import static com.project.ecobike.FileProcessor.addNewBikes;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -15,6 +14,7 @@ public class Validation {
     private static Multithreading multithreading = new Multithreading();
     private static UserInput userInput = new UserInput();
     private static Scanner scan = new Scanner(System.in);
+    private static AddBikes addBikes = new AddBikes();
 
     public static String validatorAvailable(String value) {
         validatorInteger(value);
@@ -122,7 +122,7 @@ public class Validation {
     }
 
     public static void validatorArrListAddedBikes() {
-        if (addNewBikes.arrListAddedBikes.isEmpty()) {
+        if (addBikes.arrListAddedBikes.isEmpty()) {
             System.out.println("Nothing to save");
             userInput.dispalyMenu();
         }

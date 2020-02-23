@@ -22,7 +22,7 @@ public class FileProcessor {
     private static Validation validation = new Validation();
 
     public static List<Bikes> arrBikes = new ArrayList<Bikes>();
-    public static AddNewBikes addNewBikes = new AddNewBikes();
+    public static AddBikes addBikes = new AddBikes();
     public static String[] itemArr;
     private static String current;
 
@@ -50,7 +50,7 @@ public class FileProcessor {
         validation.validatorArrListAddedBikes();
         try {
             BufferedWriter writer = new BufferedWriter(new FileWriter(Paths.get(url.toUri()).toString(), true));
-            for (Bikes bike : addNewBikes.arrListAddedBikes) {
+            for (Bikes bike : addBikes.arrListAddedBikes) {
                 if (bike instanceof Speedelec) {
                     Speedelec speedelec = (Speedelec) bike;
                     writer.write(speedelec.getBrand() + "; "
@@ -85,7 +85,7 @@ public class FileProcessor {
                             + System.lineSeparator());
                 }
             }
-            addNewBikes.arrListAddedBikes.clear();
+            addBikes.arrListAddedBikes.clear();
             writer.close();
         } catch (IOException ex) {
             Logger.getLogger(FileProcessor.class.getName()).log(Level.SEVERE, null, ex);
