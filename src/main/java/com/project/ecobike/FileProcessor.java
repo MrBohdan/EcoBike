@@ -26,6 +26,11 @@ public class FileProcessor {
     public static String[] itemArr;
     private static String current;
 
+    /**
+     * Read all items from the file and add them to List through constructions
+     *
+     * @param url
+     */
     public static void readFile(Path url) {
         try {
             BufferedReader read = Files.newBufferedReader(Paths.get(url.toUri()));
@@ -46,6 +51,11 @@ public class FileProcessor {
         }
     }
 
+    /**
+     * write new items to the file
+     *
+     * @param url
+     */
     public static void writeFile(Path url) {
         validation.validatorArrListAddedBikes();
         try {

@@ -29,6 +29,12 @@ public class Validation {
         return value;
     }
 
+    /**
+     * Check, whatever user save new items to file or not
+     *
+     * @param value
+     * @return corresponding message
+     */
     public static String validatorifNotSaved(String value) {
         value = validatorInteger(value);
         if (!value.matches("\\d+") || Integer.parseInt(value) > 3 || Integer.parseInt(value) < 0) {
@@ -39,6 +45,12 @@ public class Validation {
         }
     }
 
+    /**
+     * Validate, user input in main menu to avoid "exceptions"
+     *
+     * @param value
+     * @return
+     */
     public static String validatorMenu(String value) {
         value = validatorInteger(value);
         if (!value.matches("\\d+") || Integer.parseInt(value) > 7 || Integer.parseInt(value) < 1) {
@@ -49,6 +61,12 @@ public class Validation {
         }
     }
 
+    /**
+     * Check if user entered integer or not
+     *
+     * @param value
+     * @return corresponding message
+     */
     public static String validatorInteger(String value) {
         try {
             Integer.parseInt(value);
@@ -70,6 +88,13 @@ public class Validation {
         return value = scan.nextLine();
     }
 
+    /**
+     * Check, if the file to which user give path exist if not display error
+     * message
+     *
+     * @param value
+     * @return
+     */
     public static Path validatorPath(Path value) {
 
         if (!Files.isRegularFile(value)) {
@@ -96,18 +121,25 @@ public class Validation {
         return null;
     }
 
+    /**
+     * If search thread is running. not allowing user to access to add new items
+     * and display corresponding message
+     */
     public static void checkSearchActivity() {
         if (multithreading.searchActivity == true) {
-            System.out.println("\nError: Sorry you are not allowed to add new item. While search is in the process");
+            System.out.println("\nError: Sorry, you are not allowed to add a new item. While the search is in the process");
             userInput.dispalyMenu();
         }
     }
 
+    /**
+     * Check when the search is running or completed
+     */
     public static void searchStatus() {
         if (multithreading.searchActivity == true) {
             System.out.println("\nSearch is running");
         } else {
-            System.out.println("\nSearch complited");
+            System.out.println("\nSearch completed");
         }
     }
 
@@ -121,6 +153,10 @@ public class Validation {
         }
     }
 
+    /**
+     * Check if user add new items to the system or not and not allow to save
+     * empty list.
+     */
     public static void validatorArrListAddedBikes() {
         if (addBikes.arrListAddedBikes.isEmpty()) {
             System.out.println("Nothing to save");

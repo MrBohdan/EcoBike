@@ -92,6 +92,13 @@ public class Bikes {
 
 }
 
+/**
+ * BikesConstructors to assign correct variables to corresponding setters It
+ * makes easier to retrieve needed variables and manipulate with them
+ *
+ * @param itemArr
+ * @return
+ */
 class BikesConstructors {
 
     private static Validation validation = new Validation();
