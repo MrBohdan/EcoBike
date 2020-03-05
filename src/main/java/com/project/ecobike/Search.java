@@ -18,12 +18,12 @@ public class Search {
     public static void fndItem(String[] search) {
         searchStarted = true;
 
-        Optional<Bikes> dataPointsCalledJohn = fileReader.arrBikes
+        Optional<Bikes> result = fileReader.arrBikes
                 .stream()
                 .filter(p -> p.getBrand().contains(search[0]))
                 .filter(p -> p != null && p.getColor().contains(search[1]))
                 .findFirst();
-        dataPointsCalledJohn.stream().forEach(System.out::println);
+        result.stream().forEach(System.out::println);
 
         searchThread.stop();
         multithreading.searchActivity = searchThread.isAlive();

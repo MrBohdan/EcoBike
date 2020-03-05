@@ -108,7 +108,7 @@ public class UserInput {
                 answers[a] = validate.validatorAvailable(scan.nextLine());
             } else if (a == 1 || a == 2 || a == 3 || a == 6) {
                 System.out.println(itemArr[a]);
-                answers[a] = validate.validatorInteger(scan.nextLine());
+                answers[a] = validate.validatorIfInteger(scan.nextLine());
             } else {
                 System.out.println(itemArr[a]);
                 answers[a] = scan.nextLine();
@@ -135,7 +135,7 @@ public class UserInput {
                 answers[a] = validate.validatorAvailable(scan.nextLine());
             } else if (a == 1 || a == 2 || a == 4 || a == 6) {
                 System.out.println(itemArr[a]);
-                answers[a] = validate.validatorInteger(scan.nextLine());
+                answers[a] = validate.validatorIfInteger(scan.nextLine());
             } else {
                 System.out.println(itemArr[a]);
                 answers[a] = scan.nextLine();
@@ -162,7 +162,7 @@ public class UserInput {
                 answers[a] = validate.validatorAvailable(scan.nextLine());
             } else if (a == 1 || a == 2 || a == 4 || a == 6) {
                 System.out.println(itemArr[a]);
-                answers[a] = validate.validatorInteger(scan.nextLine());
+                answers[a] = validate.validatorIfInteger(scan.nextLine());
             } else {
                 System.out.println(itemArr[a]);
                 answers[a] = scan.nextLine();

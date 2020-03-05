@@ -17,7 +17,7 @@ public class Validation {
     private static AddBikes addBikes = new AddBikes();
 
     public static String validatorAvailable(String value) {
-        validatorInteger(value);
+        validatorIfInteger(value);
         if (Integer.parseInt(value) != 1 && Integer.parseInt(value) != 2) {
             value = dispalyErrorMessage(value);
             value = validatorAvailable(value);
@@ -36,7 +36,7 @@ public class Validation {
      * @return corresponding message
      */
     public static String validatorifNotSaved(String value) {
-        value = validatorInteger(value);
+        value = validatorIfInteger(value);
         if (!value.matches("\\d+") || Integer.parseInt(value) > 3 || Integer.parseInt(value) < 0) {
             value = dispalyErrorMessage(value);
             return validatorifNotSaved(value);
@@ -52,7 +52,7 @@ public class Validation {
      * @return
      */
     public static String validatorMenu(String value) {
-        value = validatorInteger(value);
+        value = validatorIfInteger(value);
         if (!value.matches("\\d+") || Integer.parseInt(value) > 7 || Integer.parseInt(value) < 1) {
             value = dispalyErrorMessage(value);
             return validatorMenu(value);
@@ -67,18 +67,18 @@ public class Validation {
      * @param value
      * @return corresponding message
      */
-    public static String validatorInteger(String value) {
+    public static String validatorIfInteger(String value) {
         try {
             Integer.parseInt(value);
         } catch (NumberFormatException e) {
             value = dispalyErrorMessage(value);
-            value = validatorInteger(value);
+            value = validatorIfInteger(value);
         }
         if (Integer.parseInt(value) >= 0) {
             return value;
         } else {
             value = dispalyErrorMessage(value);
-            value = validatorInteger(value);
+            value = validatorIfInteger(value);
         }
         return value;
     }
