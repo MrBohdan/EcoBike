@@ -1,91 +1,68 @@
-package com.project.ecobike;
+package models;
 
 import java.util.Objects;
 
 /**
- *
  * @author Bohdan Skrypnyk
  */
-public class Speedelec extends Bikes {
+public class Bikes {
 
-    public int speed;
-    public int battery;
-   
+    public String brand;
+    public int weight;
+    public String availability;
+    public String color;
+    public int price;
 
-    @Override
-    public void setBrand(String brand) {
+    public Bikes() {
+    }
+
+    public Bikes(String brand, int weight, String availability, String color, int price) {
         this.brand = brand;
-    }
-
-    public void setSpeed(int speed) {
-        this.speed = speed;
-    }
-
-    @Override
-    public void setWeight(int weight) {
         this.weight = weight;
-    }
-
-    @Override
-    public void setAvailability(String availability) {
         this.availability = availability;
-    }
-
-    public void setBattery(int battery) {
-        this.battery = battery;
-    }
-
-    @Override
-    public void setColor(String color) {
         this.color = color;
-    }
-
-    @Override
-    public void setPrice(int price) {
         this.price = price;
     }
 
-    @Override
+
     public String getBrand() {
         return brand;
     }
 
-    public int getSpeed() {
-        return speed;
+    public void setBrand(String brand) {
+        this.brand = brand;
     }
 
-    @Override
     public int getWeight() {
         return weight;
     }
 
-    @Override
+    public void setWeight(int weight) {
+        this.weight = weight;
+    }
+
     public String getAvailability() {
         return availability;
     }
 
-    public int getBattery() {
-        return battery;
+    public void setAvailability(String availability) {
+        this.availability = availability;
     }
 
-    @Override
     public String getColor() {
         return color;
     }
 
-    @Override
+    public void setColor(String color) {
+        this.color = color;
+    }
+
     public int getPrice() {
         return price;
     }
 
-    @Override
-    public String toString() {
-        return brand + " has maximum speed " + speed + " km/h"
-                + " the weight " + weight + " grams"
-                + " and " + availability + ","
-                + " with " + battery + " mAh battery"
-                + " in " + color + " color. \n"
-                + " Price: " + price + " euros.";
+    public void setPrice(int price) {
+        this.price = price;
     }
 
     @Override
@@ -105,14 +82,8 @@ public class Speedelec extends Bikes {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final Speedelec other = (Speedelec) obj;
-        if (this.speed != other.speed) {
-            return false;
-        }
+        final Bikes other = (Bikes) obj;
         if (this.weight != other.weight) {
-            return false;
-        }
-        if (this.battery != other.battery) {
             return false;
         }
         if (this.price != other.price) {

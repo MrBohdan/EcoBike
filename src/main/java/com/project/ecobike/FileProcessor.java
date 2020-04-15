@@ -1,5 +1,7 @@
 package com.project.ecobike;
 
+import models.*;
+
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
@@ -13,12 +15,11 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- *
  * @author Bohdan Skrypnyk
  */
 public class FileProcessor {
 
-    private static BikesConstructors bikesConstructors = new BikesConstructors();
+    public static BikesObj bikesObj = new BikesObj();
     private static Validation validation = new Validation();
 
     public static List<Bikes> arrBikes = new ArrayList<Bikes>();
@@ -38,11 +39,11 @@ public class FileProcessor {
             while ((current = read.readLine()) != null) {
                 itemArr = current.split("\\;");
                 if (current.contains("SPEEDELEC")) {
-                    arrBikes.add(bikesConstructors.speedelecConstructor(itemArr));
+                    arrBikes.add(bikesObj.speedelecConstructor(itemArr));
                 } else if (current.contains("E-BIKE")) {
-                    arrBikes.add(bikesConstructors.ebikeConstructor(itemArr));
+                    arrBikes.add(bikesObj.ebikeConstructor(itemArr));
                 } else if (current.contains("FOLDING")) {
-                    arrBikes.add(bikesConstructors.foldingBikeConstructor(itemArr));
+                    arrBikes.add(bikesObj.foldingBikeConstructor(itemArr));
                 }
             }
             read.close();
@@ -60,44 +61,39 @@ public class FileProcessor {
         validation.validatorArrListAddedBikes();
         try {
             BufferedWriter writer = new BufferedWriter(new FileWriter(Paths.get(url.toUri()).toString(), true));
-            for (Bikes bike : addBikes.arrListAddedBikes) {
-                if (bike instanceof Speedelec) {
-                    Speedelec speedelec = (Speedelec) bike;
-                    writer.write(speedelec.getBrand() + "; "
-                            + speedelec.getSpeed() + "; "
-                            + speedelec.getWeight() + "; "
-                            + validation.checkAvailability(speedelec.getAvailability()) + "; "
-                            + speedelec.getBattery() + "; "
-                            + speedelec.getColor() + "; "
-                            + speedelec.getPrice()
-                            + System.lineSeparator());
-                }
-                if (bike instanceof eBike) {
-                    eBike ebike = (eBike) bike;
-                    writer.write(ebike.getBrand() + "; "
-                            + ebike.getSpeed() + "; "
-                            + ebike.getWeight() + "; "
-                            + validation.checkAvailability(ebike.getAvailability()) + "; "
-                            + ebike.getBattery() + "; "
-                            + ebike.getColor() + "; "
-                            + ebike.getPrice()
-                            + System.lineSeparator());
-                }
-                if (bike instanceof FoldingBike) {
-                    FoldingBike foldingBike = (FoldingBike) bike;
-                    writer.write(foldingBike.getBrand() + "; "
-                            + foldingBike.getSizeWheels() + "; "
-                            + foldingBike.getGears() + "; "
-                            + foldingBike.getWeight() + "; "
-                            + validation.checkAvailability(foldingBike.getAvailability()) + "; "
-                            + foldingBike.getColor() + "; "
-                            + foldingBike.getPrice()
-                            + System.lineSeparator());
-                }
-            }
+            Speedelec speedelec = new Speedelec();
+            writer.write(speedelec.getBrand() + "; "
+                    + speedelec.getSpeed() + "; "
+                    + speedelec.getWeight() + "; "
+                    + validation.checkAvailability(speedelec.getAvailability()) + "; "
+                    + speedelec.getBattery() + "; "
+                    + speedelec.getColor() + "; "
+                    + speedelec.getPrice()
+                    + System.lineSeparator());
+
+            eBike ebike = new eBike();
+            writer.write(ebike.getBrand() + "; "
+                    + ebike.getSpeed() + "; "
+                    + ebike.getWeight() + "; "
+                    + validation.checkAvailability(ebike.getAvailability()) + "; "
+                    + ebike.getBattery() + "; "
+                    + ebike.getColor() + "; "
+                    + ebike.getPrice()
+                    + System.lineSeparator());
+
+            FoldingBike foldingBike = new FoldingBike();
+            writer.write(foldingBike.getBrand() + "; "
+                    + foldingBike.getSizeWheels() + "; "
+                    + foldingBike.getGears() + "; "
+                    + foldingBike.getWeight() + "; "
+                    + validation.checkAvailability(foldingBike.getAvailability()) + "; "
+                    + foldingBike.getColor() + "; "
+                    + foldingBike.getPrice()
+                    + System.lineSeparator());
             addBikes.arrListAddedBikes.clear();
             writer.close();
-        } catch (IOException ex) {
+        } catch (
+                IOException ex) {
             Logger.getLogger(FileProcessor.class.getName()).log(Level.SEVERE, null, ex);
         }
         System.out.println("Records saved successfully");

@@ -1,9 +1,8 @@
-package com.project.ecobike;
+package models;
 
 import java.util.Objects;
 
 /**
- *
  * @author Bohdan Skrypnyk
  */
 public class FoldingBike extends Bikes {
@@ -11,42 +10,14 @@ public class FoldingBike extends Bikes {
     public int sizeWheels;
     public int gears;
 
-    @Override
-    public String getBrand() {
-        return brand;
+    public FoldingBike() {
+        super();
     }
 
-    public int getSizeWheels() {
-        return sizeWheels;
-    }
-
-    public int getGears() {
-        return gears;
-    }
-
-    @Override
-    public int getWeight() {
-        return weight;
-    }
-
-    @Override
-    public String getAvailability() {
-        return availability;
-    }
-
-    @Override
-    public String getColor() {
-        return color;
-    }
-
-    @Override
-    public int getPrice() {
-        return price;
-    }
-
-    @Override
-    public void setBrand(String brand) {
-        this.brand = brand;
+    public FoldingBike(String brand, int sizeWheels, int gears, int weight, String availability, String color, int price) {
+        super(brand, weight, availability, color, price);
+        this.sizeWheels = sizeWheels;
+        this.gears = gears;
     }
 
     public void setSizeWheels(int sizeWheels) {
@@ -57,25 +28,14 @@ public class FoldingBike extends Bikes {
         this.gears = gears;
     }
 
-    @Override
-    public void setWeight(int weight) {
-        this.weight = weight;
+    public int getSizeWheels() {
+        return sizeWheels;
     }
 
-    @Override
-    public void setAvailability(String availability) {
-        this.availability = availability;
+    public int getGears() {
+        return gears;
     }
 
-    @Override
-    public void setColor(String color) {
-        this.color = color;
-    }
-
-    @Override
-    public void setPrice(int price) {
-        this.price = price;
-    }
 
     @Override
     public String toString() {

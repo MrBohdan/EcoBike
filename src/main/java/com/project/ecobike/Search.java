@@ -1,5 +1,7 @@
 package com.project.ecobike;
 
+import models.Bikes;
+
 import java.util.Optional;
 
 /**
@@ -25,7 +27,7 @@ public class Search {
                 .findFirst();
         result.stream().forEach(System.out::println);
 
-        searchThread.stop();
+        //searchThread.stop();
         multithreading.searchActivity = searchThread.isAlive();
         validate.searchStatus();
     }

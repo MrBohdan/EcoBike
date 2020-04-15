@@ -1,81 +1,40 @@
-package com.project.ecobike;
+package models;
 
 import java.util.Objects;
 
 /**
- *
  * @author Bohdan Skrypnyk
  */
-public class eBike extends Bikes{
+public class Speedelec extends Bikes {
 
     public int speed;
     public int battery;
-    
 
-    @Override
-    public String getBrand() {
-        return brand;
+    public Speedelec() {
+        super();
     }
 
-    public int getSpeed() {
-        return speed;
+    public Speedelec(String brand, int speed, int weight, String availability, int battery, String color, int price) {
+        super(brand, weight, availability, color, price);
+        this.speed = speed;
+        this.battery = battery;
     }
 
-    @Override
-    public int getWeight() {
-        return weight;
-    }
-
-    @Override
-    public String getAvailability() {
-        return availability;
-    }
-
-    public int getBattery() {
-        return battery;
-    }
-
-    @Override
-    public String getColor() {
-        return color;
-    }
-
-    @Override
-    public int getPrice() {
-        return price;
-    }
 
     public void setSpeed(int speed) {
         this.speed = speed;
-    }
-
-    @Override
-    public void setWeight(int weight) {
-        this.weight = weight;
-    }
-
-    @Override
-    public void setAvailability(String availability) {
-        this.availability = availability;
     }
 
     public void setBattery(int battery) {
         this.battery = battery;
     }
 
-    @Override
-    public void setColor(String color) {
-        this.color = color;
+    public int getSpeed() {
+        return speed;
     }
 
-    @Override
-    public void setBrand(String brand) {
-        this.brand = brand;
-    }
-
-    @Override
-    public void setPrice(int price) {
-        this.price = price;
+    public int getBattery() {
+        return battery;
     }
 
     @Override
@@ -90,7 +49,7 @@ public class eBike extends Bikes{
 
     @Override
     public int hashCode() {
-        int hash = 7;
+        int hash = 5;
         return hash;
     }
 
@@ -105,7 +64,7 @@ public class eBike extends Bikes{
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final eBike other = (eBike) obj;
+        final Speedelec other = (Speedelec) obj;
         if (this.speed != other.speed) {
             return false;
         }
