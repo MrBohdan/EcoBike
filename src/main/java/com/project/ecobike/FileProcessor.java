@@ -21,15 +21,20 @@ public class FileProcessor {
 
     public static BikesObj bikesObj = new BikesObj();
     private static Validation validation = new Validation();
+    public static AddItem addItem = new AddItem();
 
-    public static List<Bikes> arrBikes = new ArrayList<Bikes>();
-    public static AddBikes addBikes = new AddBikes();
+    public static List<Bikes> arrBikes = new ArrayList<>();
     public static String[] itemArr;
     private static String current;
 
     /**
      * Read all items from the file and add them to List through constructions
-     *
+     * Ex: of file data
+     * .........
+     * E-BIKE Gazelle; 25; 22200; true; 26000; silver; 1735
+     * SPEEDELEC Speedway; 25; 6800; false; 15200; blue; 915
+     * FOLDING BIKE Titan; 20; 1; 11800; false; khaki; 1115
+     * .........
      * @param url
      */
     public static void readFile(Path url) {
@@ -58,39 +63,43 @@ public class FileProcessor {
      * @param url
      */
     public static void writeFile(Path url) {
-        validation.validatorArrListAddedBikes();
+        validation.validatorArrListAddBikes();
         try {
             BufferedWriter writer = new BufferedWriter(new FileWriter(Paths.get(url.toUri()).toString(), true));
-            Speedelec speedelec = new Speedelec();
-            writer.write(speedelec.getBrand() + "; "
-                    + speedelec.getSpeed() + "; "
-                    + speedelec.getWeight() + "; "
-                    + validation.checkAvailability(speedelec.getAvailability()) + "; "
-                    + speedelec.getBattery() + "; "
-                    + speedelec.getColor() + "; "
-                    + speedelec.getPrice()
-                    + System.lineSeparator());
 
-            eBike ebike = new eBike();
-            writer.write(ebike.getBrand() + "; "
-                    + ebike.getSpeed() + "; "
-                    + ebike.getWeight() + "; "
-                    + validation.checkAvailability(ebike.getAvailability()) + "; "
-                    + ebike.getBattery() + "; "
-                    + ebike.getColor() + "; "
-                    + ebike.getPrice()
-                    + System.lineSeparator());
-
-            FoldingBike foldingBike = new FoldingBike();
-            writer.write(foldingBike.getBrand() + "; "
-                    + foldingBike.getSizeWheels() + "; "
-                    + foldingBike.getGears() + "; "
-                    + foldingBike.getWeight() + "; "
-                    + validation.checkAvailability(foldingBike.getAvailability()) + "; "
-                    + foldingBike.getColor() + "; "
-                    + foldingBike.getPrice()
-                    + System.lineSeparator());
-            addBikes.arrListAddedBikes.clear();
+            for (Speedelec speedelec : addItem.arrListAddSpeedelec) {
+                writer.write(speedelec.getBrand() + "; "
+                        + speedelec.getSpeed() + "; "
+                        + speedelec.getWeight() + "; "
+                        + validation.checkAvailability(speedelec.getAvailability()) + "; "
+                        + speedelec.getBattery() + "; "
+                        + speedelec.getColor() + "; "
+                        + speedelec.getPrice()
+                        + System.lineSeparator());
+            }
+            for (eBike ebike : addItem.arrListAddeBike) {
+                writer.write(ebike.getBrand() + "; "
+                        + ebike.getSpeed() + "; "
+                        + ebike.getWeight() + "; "
+                        + validation.checkAvailability(ebike.getAvailability()) + "; "
+                        + ebike.getBattery() + "; "
+                        + ebike.getColor() + "; "
+                        + ebike.getPrice()
+                        + System.lineSeparator());
+            }
+            for (FoldingBike foldingBike : addItem.arrListAddFoldingBike) {
+                writer.write(foldingBike.getBrand() + "; "
+                        + foldingBike.getSizeWheels() + "; "
+                        + foldingBike.getGears() + "; "
+                        + foldingBike.getWeight() + "; "
+                        + validation.checkAvailability(foldingBike.getAvailability()) + "; "
+                        + foldingBike.getColor() + "; "
+                        + foldingBike.getPrice()
+                        + System.lineSeparator());
+            }
+            addItem.arrListAddSpeedelec.clear();
+            addItem.arrListAddeBike.clear();
+            addItem.arrListAddFoldingBike.clear();
             writer.close();
         } catch (
                 IOException ex) {

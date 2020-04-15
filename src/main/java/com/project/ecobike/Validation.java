@@ -14,7 +14,7 @@ public class Validation {
     private static Multithreading multithreading = new Multithreading();
     private static UserInput userInput = new UserInput();
     private static Scanner scan = new Scanner(System.in);
-    private static AddBikes addBikes = new AddBikes();
+    private static AddItem addItem = new AddItem();
 
     public static String validatorAvailable(String value) {
         validatorIfInteger(value);
@@ -157,8 +157,8 @@ public class Validation {
      * Check if user add new items to the system or not and not allow to save
      * empty list.
      */
-    public static void validatorArrListAddedBikes() {
-        if (addBikes.arrListAddedBikes.isEmpty()) {
+    public static void validatorArrListAddBikes() {
+        if (addItem.arrListAddSpeedelec.isEmpty() && addItem.arrListAddeBike.isEmpty() && addItem.arrListAddFoldingBike.isEmpty()) {
             System.out.println("Nothing to save");
             userInput.dispalyMenu();
         }

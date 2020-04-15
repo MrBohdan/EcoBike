@@ -12,7 +12,7 @@ import java.util.Scanner;
  */
 public class UserInput {
 
-    private static AddBikes addBikes = new AddBikes();
+    private static AddItem addItem = new AddItem();
     private static Validation validate = new Validation();
     private static Multithreading multithreading = new Multithreading();
 
@@ -114,7 +114,7 @@ public class UserInput {
                 answers[a] = scan.nextLine();
             }
         }
-        addBikes.addFolding(answers);
+        addItem.addFolding(answers);
     }
 
     private static void speedelecQuestions() {
@@ -141,7 +141,7 @@ public class UserInput {
                 answers[a] = scan.nextLine();
             }
         }
-        addBikes.addSpeedelec(answers);
+        addItem.addSpeedelec(answers);
     }
 
     private static void eBikeQuestions() {
@@ -168,12 +168,12 @@ public class UserInput {
                 answers[a] = scan.nextLine();
             }
         }
-        addBikes.addEbike(answers);
+        addItem.addEbike(answers);
     }
 
     private static void ifNotSaved() {
-        AddBikes addBikes = new AddBikes();
-        if (addBikes.arrListAddedBikes.isEmpty()) {
+        AddItem addItem = new AddItem();
+        if (addItem.arrListAddSpeedelec.isEmpty() && addItem.arrListAddeBike.isEmpty() && addItem.arrListAddFoldingBike.isEmpty()) {
             exit(0);
         } else {
             System.out.println("You didnt save new items! "
