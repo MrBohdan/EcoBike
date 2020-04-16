@@ -1,7 +1,5 @@
 package models;
 
-import java.util.Objects;
-
 /**
  * @author Bohdan Skrypnyk
  */
@@ -63,42 +61,6 @@ public class Bikes {
 
     public void setPrice(int price) {
         this.price = price;
-    }
-
-    @Override
-    public int hashCode() {
-        int hash = 5;
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final Bikes other = (Bikes) obj;
-        if (this.weight != other.weight) {
-            return false;
-        }
-        if (this.price != other.price) {
-            return false;
-        }
-        if (!Objects.equals(this.brand, other.brand)) {
-            return false;
-        }
-        if (!Objects.equals(this.availability, other.availability)) {
-            return false;
-        }
-        if (!Objects.equals(this.color, other.color)) {
-            return false;
-        }
-        return true;
     }
 
 }

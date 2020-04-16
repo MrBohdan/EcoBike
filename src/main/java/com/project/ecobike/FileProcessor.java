@@ -44,11 +44,11 @@ public class FileProcessor {
             while ((current = read.readLine()) != null) {
                 itemArr = current.split("\\;");
                 if (current.contains("SPEEDELEC")) {
-                    arrBikes.add(bikesObj.speedelecConstructor(itemArr));
+                    arrBikes.add(bikesObj.speedelecObj(itemArr));
                 } else if (current.contains("E-BIKE")) {
-                    arrBikes.add(bikesObj.ebikeConstructor(itemArr));
+                    arrBikes.add(bikesObj.ebikeObj(itemArr));
                 } else if (current.contains("FOLDING")) {
-                    arrBikes.add(bikesObj.foldingBikeConstructor(itemArr));
+                    arrBikes.add(bikesObj.foldingBikeObj(itemArr));
                 }
             }
             read.close();
